@@ -4,7 +4,7 @@ DEP5118 ITA3 student prototype by Zhou Jiaxuan. This site explores how one-minut
 
 ## Important data notice
 
-The ten records in `data/demo_reports.geojson` are synthetic. They are not observed incidents and their coordinates are not confirmed public-bin locations. Do not use them to assess actual cleanliness or service performance.
+The 25 records in `data/demo_reports.geojson` are synthetic observations at 10 illustrative sites. Repeated coordinates demonstrate multiple reports about the same possible bin at similar or different times; they do not represent 25 bins. These are not observed incidents, and their coordinates are not confirmed public-bin locations. Do not use them to assess actual cleanliness or service performance.
 
 ## Local preview
 
@@ -15,6 +15,8 @@ python -m http.server 5179
 ```
 
 The map uses Leaflet 1.9.4 and OpenStreetMap standard tiles. It needs an internet connection. Do not bulk download or prefetch tiles; retain visible OSM attribution.
+
+Each marker aggregates reports by `site_id`. Its centre number and size show the number of reports; coloured sectors show their condition mix. Click a marker or a site in the list for the dated observations. Condition and time-of-day filters recalculate these summaries from the matching records.
 
 ## Live submission integration
 

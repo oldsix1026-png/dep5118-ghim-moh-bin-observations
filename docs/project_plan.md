@@ -20,11 +20,11 @@ The form map currently opens at the platform's default location because saving a
 
 ## Management
 
-Use a four-week trial as a proposal, not a claim of actual fieldwork. A moderator checks that each submission is in scope, removes duplicate reports of the same bin and event, and screens optional photographs for faces, number plates, and home entrances before publication. Public points may be rounded if the platform can do so without obscuring a public-bin location. Publish only moderated reports. Separate the ten synthetic teaching records from any live submissions and label both datasets prominently.
+Use a four-week trial as a proposal, not a claim of actual fieldwork. A moderator checks that each submission is in scope, removes accidental duplicates of the same observation, and screens optional photographs for faces, number plates, and home entrances before publication. Independent observations of the same bin can remain, with their different times recorded. Public points may be rounded if the platform can do so without obscuring a public-bin location. Publish only moderated reports. Separate the 25 synthetic teaching records at 10 illustrative sites from any live submissions and label both datasets prominently.
 
 ## Story for the map
 
-The question is not how many bins exist. It is whether reports recur at the same public points and at similar times. With only ten synthetic records, the map proves the interface and filtering workflow, not a real pattern. Any real inference requires actual observations over the trial period.
+The question is not how many bins exist. It is whether reports recur at the same public points and at similar or different times of day. The map aggregates 25 synthetic observations at 10 illustrative sites; it demonstrates repeated-report visualization and filtering, not a real pattern. Any real inference requires actual observations over the trial period.
 
 ## Submission checklist
 

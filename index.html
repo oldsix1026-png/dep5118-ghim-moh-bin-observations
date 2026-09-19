@@ -47,7 +47,7 @@
         <div>
           <p class="eyebrow">Explore the prototype</p>
           <h2 id="map-heading">Reports around Ghim Moh</h2>
-          <p>Ten illustrative reports show how location, condition and time can be compared. They are <strong>not verified incidents or confirmed bin locations</strong>.</p>
+          <p>Twenty-five simulated observations share ten illustrative sites. Several reports can refer to the same bin at similar or different times. These are <strong>not verified incidents or confirmed bin locations</strong>.</p>
         </div>
         <div class="map-heading-actions">
           <a class="live-map-link" id="live-map-link" href="https://ghim-moh-bin-watch.ushahidi.io/map" target="_blank" rel="noopener noreferrer">View published reports <span aria-hidden="true">↗</span></a>
@@ -58,6 +58,7 @@
         <div class="map-column">
           <div id="map" role="application" aria-label="Map of illustrative overflowing-bin reports in Ghim Moh Gardens"></div>
           <div class="map-key" aria-label="Map legend">
+            <span class="key-explanation">Number and size = reports at one site; colours = reported conditions</span>
             <span><i class="key-dot near-full"></i> Nearly full</span>
             <span><i class="key-dot full"></i> Full</span>
             <span><i class="key-dot outside"></i> Litter outside</span>
@@ -67,7 +68,7 @@
           <div class="panel-head">
             <div>
               <p class="eyebrow">Illustrative observations</p>
-              <h3 id="report-list-heading"><span id="report-count">10</span> reports</h3>
+              <h3 id="report-list-heading"><span id="report-count">25</span> reports at <span id="site-count">10</span> sites</h3>
             </div>
             <button id="reset-filters" type="button" class="quiet-button">Reset</button>
           </div>
@@ -90,7 +91,7 @@
           <div id="report-list" class="report-list" aria-live="polite"></div>
         </aside>
       </div>
-      <p class="map-footnote">Points are placed only to demonstrate the prototype. Their coordinates must not be used to identify real bins or infer actual hotspots.</p>
+      <p class="map-footnote">One marker represents one illustrative site, not one report. Click it to see every simulated observation there. Coordinates must not be used to identify real bins or infer actual hotspots.</p>
     </section>
 
     <section id="report-section" class="report-section" aria-labelledby="report-heading">
@@ -118,7 +119,7 @@
         </div>
         <div class="prose">
           <p>Report a public bin in Ghim Moh Gardens or along the walking route to the Blk 20 market and food centre. The report should describe what you can see now, not a guess about how often it happens.</p>
-          <p>If possible, place the marker at the bin rather than at your home. You do not need to give your name or contact details. The project moderator checks locations, removes duplicates and screens optional photos before publishing.</p>
+          <p>If possible, place the marker at the bin rather than at your home. You do not need to give your name or contact details. The project moderator checks locations, removes accidental repeat submissions of the same observation, and screens optional photos before publishing. Separate observations of the same bin can remain as separate reports.</p>
           <p>Need a clean-up rather than a map record? <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">Report the issue to OneService</a>.</p>
         </div>
       </div>

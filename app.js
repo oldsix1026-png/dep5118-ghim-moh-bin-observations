@@ -24,6 +24,7 @@
 
   const list = document.getElementById('report-list');
   const count = document.getElementById('report-count');
+  const siteCount = document.getElementById('site-count');
   const statusFilter = document.getElementById('status-filter');
   const timeFilter = document.getElementById('time-filter');
   const resetButton = document.getElementById('reset-filters');
@@ -51,27 +52,38 @@
   const markerLayer = L.layerGroup().addTo(map);
   let reports = [];
 
-  function makeRow(report, marker) {
+  function breakdown(observations) {
+    return Object.fromEntries(Object.keys(statusLabels).map((status) => [
+      status, observations.filter((report) => report.properties.status === status).length
+    ]));
+  }
+
+  function summary(counts) {
+    return Object.entries(counts)
+      .filter(([, value]) => value)
+      .map(([status, value]) => `${statusLabels[status]} ${value}`)
+      .join(' · ');
+  }
+
+  function makeRow(site, marker) {
     const row = document.createElement('button');
     row.type = 'button';
     row.className = 'report-row';
     const top = document.createElement('span');
     top.className = 'row-top';
-    const condition = document.createElement('span');
-    condition.className = 'row-status';
-    const dot = document.createElement('i');
-    dot.className = `key-dot ${report.properties.status}`;
-    dot.setAttribute('aria-hidden', 'true');
-    condition.append(dot, document.createTextNode(statusLabels[report.properties.status]));
-    const date = document.createElement('span');
-    date.textContent = report.properties.displayTime;
-    top.append(condition, date);
     const place = document.createElement('span');
     place.className = 'row-location';
-    place.textContent = report.properties.place;
-    row.append(top, place);
+    place.textContent = site.observations[0].properties.place;
+    const tally = document.createElement('span');
+    tally.className = 'row-tally';
+    tally.textContent = `${site.observations.length} ${site.observations.length === 1 ? 'report' : 'reports'}`;
+    top.append(place, tally);
+    const detail = document.createElement('span');
+    detail.className = 'row-detail';
+    detail.textContent = summary(breakdown(site.observations));
+    row.append(top, detail);
     row.addEventListener('click', () => {
-      const [lng, lat] = report.geometry.coordinates;
+      const [lng, lat] = site.coordinates;
       map.flyTo([lat, lng], 17, { duration: 0.6 });
       marker.openPopup();
     });
@@ -85,7 +97,18 @@
     );
     markerLayer.clearLayers();
     list.replaceChildren();
+    const sites = new Map();
+    filtered.forEach((report) => {
+      const id = report.properties.site_id;
+      if (!sites.has(id)) sites.set(id, { coordinates: report.geometry.coordinates, observations: [] });
+      sites.get(id).observations.push(report);
+    });
+    const rankedSites = [...sites.values()].sort((a, b) =>
+      b.observations.length - a.observations.length ||
+      a.observations[0].properties.place.localeCompare(b.observations[0].properties.place)
+    );
     count.textContent = String(filtered.length);
+    siteCount.textContent = String(sites.size);
     if (!filtered.length) {
       const empty = document.createElement('p');
       empty.className = 'empty-state';
@@ -94,26 +117,42 @@
       return;
     }
 
-    filtered.forEach((report) => {
-      const [lng, lat] = report.geometry.coordinates;
-      const props = report.properties;
-      const marker = L.circleMarker([lat, lng], {
-        radius: 8,
-        color: '#fff',
-        weight: 2,
-        fillColor: statusColors[props.status],
-        fillOpacity: 1
-      }).addTo(markerLayer);
+    rankedSites.forEach((site) => {
+      const [lng, lat] = site.coordinates;
+      const observations = site.observations;
+      const counts = breakdown(observations);
+      const size = 30 + Math.min(observations.length - 1, 5) * 4;
+      const nearEnd = counts['near-full'] / observations.length * 100;
+      const fullEnd = (counts['near-full'] + counts.full) / observations.length * 100;
+      const fill = `conic-gradient(${statusColors['near-full']} 0 ${nearEnd}%, ${statusColors.full} ${nearEnd}% ${fullEnd}%, ${statusColors.outside} ${fullEnd}% 100%)`;
+      const icon = L.divIcon({
+        className: 'site-icon',
+        html: `<span class="site-marker" style="--marker-size:${size}px;background:${fill}"><span class="site-marker-count">${observations.length}</span></span>`,
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2],
+        popupAnchor: [0, -size / 2]
+      });
+      const marker = L.marker([lat, lng], { icon, title: `${observations.length} demo ${observations.length === 1 ? 'report' : 'reports'} at ${observations[0].properties.place}` }).addTo(markerLayer);
       const popup = document.createElement('div');
       const title = document.createElement('p');
       title.className = 'popup-title';
-      title.textContent = `${statusLabels[props.status]} · Demo report`;
+      title.textContent = observations[0].properties.place;
       const detail = document.createElement('p');
       detail.className = 'popup-detail';
-      detail.textContent = `${props.place} · ${props.displayTime}`;
-      popup.append(title, detail);
+      detail.textContent = `${observations.length} simulated ${observations.length === 1 ? 'report' : 'reports'} · ${summary(counts)}`;
+      const timeline = document.createElement('ul');
+      timeline.className = 'popup-timeline';
+      [...observations].sort((a, b) => a.properties.reportedAt.localeCompare(b.properties.reportedAt)).forEach((report) => {
+        const entry = document.createElement('li');
+        const dot = document.createElement('i');
+        dot.className = `key-dot ${report.properties.status}`;
+        dot.setAttribute('aria-hidden', 'true');
+        entry.append(dot, document.createTextNode(`${report.properties.displayTime} · ${statusLabels[report.properties.status]}`));
+        timeline.append(entry);
+      });
+      popup.append(title, detail, timeline);
       marker.bindPopup(popup);
-      list.append(makeRow(report, marker));
+      list.append(makeRow(site, marker));
     });
   }
 
@@ -138,5 +177,6 @@
     .catch(() => {
       list.innerHTML = '<p class="empty-state">Demo reports could not load. Please reload the page.</p>';
       count.textContent = '0';
+      siteCount.textContent = '0';
     });
 })();
