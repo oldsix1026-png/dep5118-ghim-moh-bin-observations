@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "name": "Illustrative Ghim Moh bin reports - NOT observed incidents",
+  "description": "Ten synthetic records for testing the ITA3 map interface. Coordinates are approximate demonstration points, not confirmed public-bin locations.",
+  "features": [
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.78823, 1.31097] }, "properties": { "id": "DEMO-01", "status": "full", "period": "midday", "displayTime": "12 Sep · 12:30", "place": "Illustrative market-side path", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.78864, 1.31130] }, "properties": { "id": "DEMO-02", "status": "outside", "period": "evening", "displayTime": "12 Sep · 18:40", "place": "Illustrative Ghim Moh Road point", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.78916, 1.31154] }, "properties": { "id": "DEMO-03", "status": "near-full", "period": "morning", "displayTime": "13 Sep · 08:10", "place": "Illustrative estate walkway", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.78970, 1.31174] }, "properties": { "id": "DEMO-04", "status": "full", "period": "midday", "displayTime": "13 Sep · 13:15", "place": "Illustrative route east of market", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79033, 1.31145] }, "properties": { "id": "DEMO-05", "status": "full", "period": "evening", "displayTime": "14 Sep · 19:05", "place": "Illustrative residential path", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79091, 1.31182] }, "properties": { "id": "DEMO-06", "status": "near-full", "period": "morning", "displayTime": "15 Sep · 09:00", "place": "Illustrative shared walkway", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79138, 1.31158] }, "properties": { "id": "DEMO-07", "status": "outside", "period": "midday", "displayTime": "15 Sep · 12:50", "place": "Illustrative Ghim Moh Gardens point", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79205, 1.31186] }, "properties": { "id": "DEMO-08", "status": "full", "period": "evening", "displayTime": "16 Sep · 18:20", "place": "Illustrative estate route", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79281, 1.31149] }, "properties": { "id": "DEMO-09", "status": "near-full", "period": "morning", "displayTime": "17 Sep · 08:45", "place": "Illustrative path toward Block 21", "source": "simulated" } },
+    { "type": "Feature", "geometry": { "type": "Point", "coordinates": [103.79345, 1.31121] }, "properties": { "id": "DEMO-10", "status": "outside", "period": "midday", "displayTime": "17 Sep · 13:35", "place": "Illustrative Block 21 vicinity", "source": "simulated" } }
+  ]
+}

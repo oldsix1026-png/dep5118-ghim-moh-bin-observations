@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A student prototype for reporting overflowing public bins in Ghim Moh Gardens, Singapore.">
+  <title>Ghim Moh Bin Watch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Ghim Moh Bin Watch, back to top">
+      <span class="brand-mark" aria-hidden="true">●</span>
+      <span>Ghim Moh Bin Watch</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#map-section">Map</a>
+      <a href="#report-section">Report</a>
+      <a href="#guide-section">How it works</a>
+      <a href="#about-section">About</a>
+    </nav>
+    <a class="header-action" id="header-report-link" href="#report-section">Submit a report <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <section id="top" class="intro-band" aria-labelledby="page-title">
+      <div class="intro-inner">
+        <div>
+          <p class="eyebrow">Community reporting prototype · Ghim Moh Gardens</p>
+          <h1 id="page-title">When the bin is full, where does the litter go?</h1>
+          <p class="intro-copy">A quick way to note overflowing public bins along everyday routes. Repeated reports can show where and when a closer look is needed.</p>
+        </div>
+        <div class="intro-aside">
+          <span class="live-dot" aria-hidden="true"></span>
+          <p><strong>Student project</strong><br>Reports are not service requests. For a bin needing immediate attention, use <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">OneService</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="map-section" class="map-section" aria-labelledby="map-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Explore the prototype</p>
+          <h2 id="map-heading">Reports around Ghim Moh</h2>
+          <p>Ten illustrative reports show how location, condition and time can be compared. They are <strong>not verified incidents or confirmed bin locations</strong>.</p>
+        </div>
+        <div class="map-heading-actions">
+          <a class="live-map-link" id="live-map-link" href="https://ghim-moh-bin-watch.ushahidi.io/map" target="_blank" rel="noopener noreferrer">View published reports <span aria-hidden="true">↗</span></a>
+          <span class="data-badge">DEMO DATA</span>
+        </div>
+      </div>
+      <div class="map-workspace">
+        <div class="map-column">
+          <div id="map" role="application" aria-label="Map of illustrative overflowing-bin reports in Ghim Moh Gardens"></div>
+          <div class="map-key" aria-label="Map legend">
+            <span><i class="key-dot near-full"></i> Nearly full</span>
+            <span><i class="key-dot full"></i> Full</span>
+            <span><i class="key-dot outside"></i> Litter outside</span>
+          </div>
+        </div>
+        <aside class="report-panel" aria-labelledby="report-list-heading">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Illustrative observations</p>
+              <h3 id="report-list-heading"><span id="report-count">10</span> reports</h3>
+            </div>
+            <button id="reset-filters" type="button" class="quiet-button">Reset</button>
+          </div>
+          <div class="filters">
+            <label for="status-filter">Condition</label>
+            <select id="status-filter">
+              <option value="all">All conditions</option>
+              <option value="near-full">Nearly full</option>
+              <option value="full">Full</option>
+              <option value="outside">Litter outside</option>
+            </select>
+            <label for="time-filter">Time of day</label>
+            <select id="time-filter">
+              <option value="all">Any time</option>
+              <option value="morning">Morning</option>
+              <option value="midday">Midday</option>
+              <option value="evening">Evening</option>
+            </select>
+          </div>
+          <div id="report-list" class="report-list" aria-live="polite"></div>
+        </aside>
+      </div>
+      <p class="map-footnote">Points are placed only to demonstrate the prototype. Their coordinates must not be used to identify real bins or infer actual hotspots.</p>
+    </section>
+
+    <section id="report-section" class="report-section" aria-labelledby="report-heading">
+      <div class="report-inner">
+        <div>
+          <p class="eyebrow">About one minute</p>
+          <h2 id="report-heading">See an overflowing bin?</h2>
+      <p>Search "20 Ghim Moh Road Singapore" in the form map, then move the marker to the public bin you saw. Choose its condition and send. A photo is optional; please avoid people, vehicle plates and home entrances.</p>
+          <a class="primary-button is-unavailable" id="submit-link" href="#report-section" aria-disabled="true">Submission form being connected</a>
+          <p class="submission-note" id="submission-note">The form opens in a new tab. Reports are checked before appearing publicly.</p>
+        </div>
+        <ol class="report-steps">
+          <li><span>01</span><div><strong>Place a marker</strong><p>Choose the public bin's location on the form map.</p></div></li>
+          <li><span>02</span><div><strong>Choose a condition</strong><p>Nearly full, full, or litter outside the bin.</p></div></li>
+          <li><span>03</span><div><strong>Send it</strong><p>Your report is reviewed before appearing on the public map.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="guide-section" class="content-section" aria-labelledby="guide-heading">
+      <div class="content-grid">
+        <div>
+          <p class="eyebrow">Participant guide</p>
+          <h2 id="guide-heading">What counts as a report?</h2>
+        </div>
+        <div class="prose">
+          <p>Report a public bin in Ghim Moh Gardens or along the walking route to the Blk 20 market and food centre. The report should describe what you can see now, not a guess about how often it happens.</p>
+          <p>If possible, place the marker at the bin rather than at your home. You do not need to give your name or contact details. The project moderator checks locations, removes duplicates and screens optional photos before publishing.</p>
+          <p>Need a clean-up rather than a map record? <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">Report the issue to OneService</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about-section" class="content-section about-section" aria-labelledby="about-heading">
+      <div class="content-grid">
+        <div>
+          <p class="eyebrow">Purpose and limits</p>
+          <h2 id="about-heading">A small-area picture, not a cleanliness score</h2>
+        </div>
+        <div class="prose">
+          <p>A single full bin may be cleared quickly. Reports across different days and times could reveal recurring pressure along a route, giving residents and potential local partners a clearer starting point for discussion.</p>
+          <p>This is an independent student prototype. Ghim Moh Gardens Residents' Committee and Holland-Bukit Panjang Town Council are potential outreach or data users, not confirmed project partners. Public reports are observations, not proof of a management failure.</p>
+          <div class="source-list">
+            <h3>Context and sources</h3>
+            <a href="https://www.hdb.gov.sg/managing-my-home/living-in-my-community/exploring-my-neighbourhood/explore-my-town/queenstown/ghim-moh-centre" target="_blank" rel="noopener noreferrer">HDB · Ghim Moh Centre <span aria-hidden="true">↗</span></a>
+            <a href="https://feedback.nea.gov.sg/icare/OnlineFeedbackForm.aspx" target="_blank" rel="noopener noreferrer">NEA · Feedback guidance <span aria-hidden="true">↗</span></a>
+            <a href="https://www.onepa.gov.sg/rc/ghim-moh-gardens-rc" target="_blank" rel="noopener noreferrer">PA · Ghim Moh Gardens RC <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Ghim Moh Bin Watch · DEP5118 ITA3 · Zhou Jiaxuan</span>
+    <span>Student prototype · Demo reports are not real incidents</span>
+  </footer>
+
+  <script src="./vendor/leaflet/leaflet.js"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
