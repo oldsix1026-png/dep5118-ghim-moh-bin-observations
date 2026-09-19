@@ -165,7 +165,7 @@
     map.setView([1.3112, 103.7906], 16);
   });
 
-  fetch('./data/demo_reports.geojson')
+  fetch('./data/demo_reports.geojson?v=25-observations-10-sites', { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
