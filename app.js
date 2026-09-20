@@ -1,25 +1,13 @@
 (() => {
   const config = window.BIN_WATCH_CONFIG || {};
-  const submitLink = document.getElementById('submit-link');
-  const headerReportLink = document.getElementById('header-report-link');
-  const submissionNote = document.getElementById('submission-note');
+  const reportLinks = ['header-report-link', 'hero-report-link', 'submit-link']
+    .map((id) => document.getElementById(id));
   const liveMapLink = document.getElementById('live-map-link');
 
   if (config.liveMapUrl) liveMapLink.href = config.liveMapUrl;
 
   if (config.submissionUrl) {
-    submitLink.href = config.submissionUrl;
-    submitLink.textContent = 'Open the reporting form ↗';
-    submitLink.classList.remove('is-unavailable');
-    submitLink.removeAttribute('aria-disabled');
-    submitLink.target = '_blank';
-    submitLink.rel = 'noopener noreferrer';
-    headerReportLink.href = config.submissionUrl;
-    headerReportLink.target = '_blank';
-    headerReportLink.rel = 'noopener noreferrer';
-    submissionNote.textContent = 'The form opens in a new tab. Reports are checked before appearing publicly.';
-  } else {
-    submitLink.addEventListener('click', (event) => event.preventDefault());
+    reportLinks.forEach((link) => { link.href = config.submissionUrl; });
   }
 
   const list = document.getElementById('report-list');
@@ -113,7 +101,7 @@
     if (!filtered.length) {
       const empty = document.createElement('p');
       empty.className = 'empty-state';
-      empty.textContent = 'No demo reports match these filters.';
+      empty.textContent = 'No example reports match these filters.';
       list.append(empty);
       return;
     }
@@ -133,14 +121,14 @@
         iconAnchor: [size / 2, size / 2],
         popupAnchor: [0, -size / 2]
       });
-      const marker = L.marker([lat, lng], { icon, title: `${observations.length} demo ${observations.length === 1 ? 'report' : 'reports'} at ${observations[0].properties.place}` }).addTo(markerLayer);
+      const marker = L.marker([lat, lng], { icon, title: `${observations.length} example ${observations.length === 1 ? 'report' : 'reports'} at ${observations[0].properties.place}` }).addTo(markerLayer);
       const popup = document.createElement('div');
       const title = document.createElement('p');
       title.className = 'popup-title';
       title.textContent = observations[0].properties.place;
       const detail = document.createElement('p');
       detail.className = 'popup-detail';
-      detail.textContent = `${observations.length} simulated ${observations.length === 1 ? 'report' : 'reports'} · ${summary(counts)}`;
+      detail.textContent = `${observations.length} example ${observations.length === 1 ? 'report' : 'reports'} · ${summary(counts)}`;
       const timeline = document.createElement('ul');
       timeline.className = 'popup-timeline';
       [...observations].sort((a, b) => a.properties.reportedAt.localeCompare(b.properties.reportedAt)).forEach((report) => {
@@ -176,7 +164,7 @@
       render();
     })
     .catch(() => {
-      list.innerHTML = '<p class="empty-state">Demo reports could not load. Please reload the page.</p>';
+      list.innerHTML = '<p class="empty-state">Example reports could not load. Please reload the page.</p>';
       count.textContent = '0';
       siteCount.textContent = '0';
     });
