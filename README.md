@@ -2,9 +2,11 @@
 
 DEP5118 ITA3 student prototype by Zhou Jiaxuan. This site explores how one-minute community reports could document overflowing public bins in Ghim Moh Gardens, Singapore.
 
+Website: https://oldsix1026-png.github.io/dep5118-ghim-moh-bin-observations/
+
 ## Important data notice
 
-The 25 records in `data/demo_reports.geojson` are synthetic observations at 10 illustrative sites. Repeated coordinates demonstrate multiple reports about the same possible bin at similar or different times; they do not represent 25 bins. These are not observed incidents, and their coordinates are not confirmed public-bin locations. Do not use them to assess actual cleanliness or service performance.
+The 25 records in `data/demo_reports.geojson` are synthetic observations at 10 illustrative sites across Ghim Moh Gardens, from the Blk 20 market area toward Blk 21. Repeated coordinates demonstrate multiple reports about the same possible bin at similar or different times; they do not represent 25 bins. These are not observed incidents, and their coordinates are not confirmed public-bin locations. Do not use them to assess actual cleanliness or service performance.
 
 ## Local preview
 
