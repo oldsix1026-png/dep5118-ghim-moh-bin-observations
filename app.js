@@ -1,6 +1,6 @@
 (() => {
   const config = window.BIN_WATCH_CONFIG || {};
-  const reportLinks = ['header-report-link', 'hero-report-link', 'submit-link']
+  const reportLinks = ['header-report-link', 'submit-link']
     .map((id) => document.getElementById(id));
   const liveMapLink = document.getElementById('live-map-link');
 

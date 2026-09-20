@@ -35,9 +35,7 @@ nav a:hover { color: var(--ink); }
 .intro-band { background: var(--ground); }
 .intro-inner { max-width: 1440px; margin: auto; padding: 35px 28px 33px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, 340px); gap: 40px; align-items: end; }
 .eyebrow { margin-bottom: 8px; color: var(--green); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-.intro-copy { color: var(--muted); max-width: 680px; margin-bottom: 17px; }
-.intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
-.text-link { font-size: 0.88rem; font-weight: 700; }
+.intro-copy { color: var(--muted); max-width: 680px; margin-bottom: 0; }
 .intro-aside { color: var(--muted); font-size: 0.86rem; }
 .intro-aside p { margin: 0; }
 .intro-aside strong { color: var(--ink); }
