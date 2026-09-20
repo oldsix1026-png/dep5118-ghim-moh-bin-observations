@@ -95,6 +95,7 @@ nav a:hover { color: var(--ink); }
 .leaflet-popup-content-wrapper { border-radius: 5px; }
 .popup-title { font-weight: 700; margin: 0 0 4px; }
 .popup-detail { color: var(--muted); font-size: 0.78rem; margin: 0; }
+.popup-daily { color: var(--ink); font-size: 0.76rem; margin: 7px 0 0; }
 .popup-timeline { list-style: none; margin: 10px 0 0; padding: 8px 0 0; border-top: 1px solid var(--line); max-height: 190px; overflow-y: auto; }
 .popup-timeline li { display: flex; align-items: center; gap: 7px; padding: 3px 0; font-size: 0.76rem; white-space: nowrap; }
 .popup-timeline .key-dot { flex: none; }

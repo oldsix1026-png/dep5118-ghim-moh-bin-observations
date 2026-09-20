@@ -54,6 +54,25 @@
       .join(' · ');
   }
 
+  function displayPlace(place) {
+    return place.replace(/^Illustrative\s+/i, '');
+  }
+
+  function fullReportsByDay(observations) {
+    const days = new Map();
+    observations.forEach(({ properties }) => {
+      const day = properties.reportedAt.slice(0, 10);
+      days.set(day, (days.get(day) || 0) + (properties.status === 'full' ? 1 : 0));
+    });
+    return [...days.entries()].sort(([a], [b]) => a.localeCompare(b))
+      .map(([day, count]) => {
+        const label = new Date(`${day}T12:00:00+08:00`).toLocaleDateString('en-SG', {
+          day: 'numeric', month: 'short', timeZone: 'Asia/Singapore'
+        });
+        return `${label}: ${count}`;
+      }).join(' · ');
+  }
+
   function makeRow(site, marker) {
     const row = document.createElement('button');
     row.type = 'button';
@@ -62,7 +81,7 @@
     top.className = 'row-top';
     const place = document.createElement('span');
     place.className = 'row-location';
-    place.textContent = site.observations[0].properties.place;
+    place.textContent = displayPlace(site.observations[0].properties.place);
     const tally = document.createElement('span');
     tally.className = 'row-tally';
     tally.textContent = `${site.observations.length} ${site.observations.length === 1 ? 'report' : 'reports'}`;
@@ -121,14 +140,17 @@
         iconAnchor: [size / 2, size / 2],
         popupAnchor: [0, -size / 2]
       });
-      const marker = L.marker([lat, lng], { icon, title: `${observations.length} example ${observations.length === 1 ? 'report' : 'reports'} at ${observations[0].properties.place}` }).addTo(markerLayer);
+      const marker = L.marker([lat, lng], { icon, title: `${observations.length} example ${observations.length === 1 ? 'report' : 'reports'} at ${displayPlace(observations[0].properties.place)}` }).addTo(markerLayer);
       const popup = document.createElement('div');
       const title = document.createElement('p');
       title.className = 'popup-title';
-      title.textContent = observations[0].properties.place;
+      title.textContent = displayPlace(observations[0].properties.place);
       const detail = document.createElement('p');
       detail.className = 'popup-detail';
       detail.textContent = `${observations.length} example ${observations.length === 1 ? 'report' : 'reports'} · ${summary(counts)}`;
+      const daily = document.createElement('p');
+      daily.className = 'popup-daily';
+      daily.textContent = `Full reports by date: ${fullReportsByDay(observations)}`;
       const timeline = document.createElement('ul');
       timeline.className = 'popup-timeline';
       [...observations].sort((a, b) => a.properties.reportedAt.localeCompare(b.properties.reportedAt)).forEach((report) => {
@@ -139,7 +161,7 @@
         entry.append(dot, document.createTextNode(`${report.properties.displayTime} · ${statusLabels[report.properties.status]}`));
         timeline.append(entry);
       });
-      popup.append(title, detail, timeline);
+      popup.append(title, detail, daily, timeline);
       marker.bindPopup(popup);
       list.append(makeRow(site, marker));
     });

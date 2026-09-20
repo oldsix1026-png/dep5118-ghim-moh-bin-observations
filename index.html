@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="./styles.css?v=quiet-sections">
+  <link rel="stylesheet" href="./styles.css?v=daily-counts">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,10 +30,10 @@
       <div class="intro-inner">
         <div>
           <h1 id="page-title">When the Bin Overflows</h1>
-          <p class="intro-copy">Seen a public bin that is full or spilling litter? Mark where it is and tell us what you saw. Reports from the same place at different times can help show where a closer look is needed.</p>
+          <p class="intro-copy">Seen a public bin that is full or spilling litter? Mark where it is and tell us what you saw.</p>
         </div>
         <div class="intro-aside">
-          <p><strong>Need urgent cleaning?</strong><br>This form records observations; it does not send a service request. Please use <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">OneService</a> for a bin needing immediate attention.</p>
+          <p><strong>Need urgent cleaning?</strong><br>This form does not send a service request. Please use <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">OneService</a> for a bin needing immediate attention.</p>
         </div>
       </div>
     </section>
@@ -41,8 +41,8 @@
     <section id="map-section" class="map-section" aria-labelledby="map-heading">
       <div class="section-heading">
         <div>
-          <h2 id="map-heading">When several reports point to one place</h2>
-          <p>This example groups 25 sample reports at 10 illustrative locations across Ghim Moh Gardens, from the Blk 20 market area toward Blk 21. It shows how reports made at different times can appear together. <strong>These are not actual resident reports or confirmed bin locations.</strong></p>
+          <h2 id="map-heading">Where and When Bins Fill Up</h2>
+          <p>This map places 25 simulated reports at 10 sample sites in Ghim Moh Gardens. Each marker shows a location, its number of reports, and the conditions seen there. Click one to see the report times and how many times it was marked Full on each date. <strong>These are not actual resident reports or confirmed bin locations.</strong></p>
         </div>
         <div class="map-heading-actions">
           <a class="live-map-link" id="live-map-link" href="https://ghim-moh-bin-watch.ushahidi.io/map" target="_blank" rel="noopener noreferrer">View Ushahidi map <span aria-hidden="true">↗</span></a>
@@ -92,7 +92,7 @@
       <div class="report-inner">
         <div>
           <h2 id="report-heading">How to report a bin</h2>
-          <p>The form asks for a location and the condition you saw. Search "20 Ghim Moh Road Singapore" to bring its map to the market area, then move the marker to the public bin you actually saw in Ghim Moh Gardens.</p>
+          <p>The form asks for a location and the condition you saw. Search "20 Ghim Moh Road Singapore" to bring its map to the research area, then move the marker to the public bin you actually saw in Ghim Moh Gardens.</p>
           <a class="primary-button" id="submit-link" href="https://ghim-moh-bin-watch.ushahidi.io/posts/create/2" target="_blank" rel="noopener noreferrer">Open report form <span aria-hidden="true">↗</span></a>
           <p class="submission-note" id="submission-note">The form opens in a new tab. Reports are reviewed before appearing publicly.</p>
         </div>
@@ -110,8 +110,7 @@
           <h2 id="about-heading">Why repeated reports matter</h2>
         </div>
         <div class="prose">
-          <p>One full bin may be cleared quickly. Reports from the same place on different days can show whether the problem keeps returning or happens at particular times. That can help residents explain the issue and give service teams a place and time to check.</p>
-          <p>Reports are observations, not proof that a bin has been missed. They need checking on site and do not guarantee a clean-up. For a problem needing attention now, please send an <a href="https://www.oneservice.gov.sg/" target="_blank" rel="noopener noreferrer">official request through OneService</a>.</p>
+          <p>A full bin can make a shared space harder to use. When neighbours note where and when it fills up, repeated reports can show which places need a closer look. After checking them on site, cleaning teams could adjust collection times or consider moving or adding bins. The goal is a cleaner neighbourhood for everyone.</p>
         </div>
       </div>
     </section>
@@ -124,6 +123,6 @@
 
   <script src="./vendor/leaflet/leaflet.js"></script>
   <script src="./config.js"></script>
-  <script src="./app.js?v=report-after-map"></script>
+  <script src="./app.js?v=daily-counts"></script>
 </body>
 </html>
