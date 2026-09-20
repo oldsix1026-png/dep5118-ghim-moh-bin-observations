@@ -1,4 +1,4 @@
-# Ghim Moh Bin Watch
+# Ghim Moh Bin Observations
 
 DEP5118 ITA3 student prototype by Zhou Jiaxuan. This site explores how one-minute community reports could document overflowing public bins in Ghim Moh Gardens, Singapore.
 
