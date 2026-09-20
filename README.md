@@ -22,7 +22,7 @@ Each marker aggregates reports by `site_id`. Its centre number and size show the
 
 ## Live submission integration
 
-The public form is `https://ghim-moh-bin-watch.ushahidi.io/posts/create/2`; the public deployment map is `https://ghim-moh-bin-watch.ushahidi.io/map`. Both are configured in `config.js`. The demo map and the live Ushahidi dataset are intentionally separate so illustrative records cannot be mistaken for community submissions.
+The public form is `https://ghim-moh-bin-watch.ushahidi.io/posts/create/2`; the public deployment map is `https://ghim-moh-bin-watch.ushahidi.io/map`. Both are configured in `config.js`. The same 25 examples have been imported into Ushahidi from `data/ushahidi_import_25.csv`. Every imported title and note identifies the record as simulated; their example observation times are in the notes, while Ushahidi's post timestamps reflect the import date. The local demo map remains separate from the live Ushahidi data feed.
 
 The site should not be published as complete until an anonymous visitor can submit a report and see a confirmation message.
 
